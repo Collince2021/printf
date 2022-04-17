@@ -36,7 +36,7 @@ int printing_in_binary(va_list Array)
 	rev_str = reverse_string(str);
 	if (rev_str == NULL)
 		return (-1);
-	writing_base(rev_str);
+	writing_the_bas(rev_str);
 	free(str);
 	free(rev_str);
 	return (len);
@@ -60,7 +60,7 @@ int printing_in_octal_system(va_list Array)
 		return (_printing_character('0'));
 	if (num < 1)
 		return (-1);
-	len = len(num, 8);
+	len = length_of_base(num, 8);
 
 	octal_rep = malloc(sizeof(char) * len + 1);
 	if (octal_rep == NULL)
@@ -76,7 +76,7 @@ int printing_in_octal_system(va_list Array)
 	if (rev_str == NULL)
 		return (-1);
 
-	writing_base(rev_str);
+	writing_the_bas(rev_str);
 	free(octal_rep);
 	free(rev_str);
 	return (len);
@@ -121,7 +121,7 @@ int printing_hexadecimal_system(va_list Array)
 	rev_hex = reverse_string(hex_rep);
 	if (rev_hex == NULL)
 		return (-1);
-	writing_base(rev_hex);
+	writing_the_bas(rev_hex);
 	free(hex_rep);
 	free(rev_hex);
 	return (len);
@@ -166,7 +166,7 @@ int printing_All(va_list Array)
 	rev_hex = reverse_string(hex_rep);
 	if (rev_hex == NULL)
 		return (-1);
-	writing_base(rev_hex);
+	writing_the_bas(rev_hex);
 	free(hex_rep);
 	free(rev_hex);
 	return (len);
