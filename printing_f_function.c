@@ -8,28 +8,28 @@
 int _printf(const char *format, ...)
 {
 	int print_characters;
-	function_converting list_of_functions[] = {
+	function_converting ls_of_f[] = {
 		{"c", printing_character},
 		{"s", printing_string},
 		{"%", printing_percent_specifier},
 		{"d", printing_int},
 		{"i", printing_int},
 		{"b", printing_in_binary},
-		{"r", printing_reverse},
+		{"r", print_reverse},
 		{"R", rot_13_ed_string},
 		{"u", _unsigned},
 		{"o", printing_in_octal_system},
-		{"x", printing_in_hexadecimal_system},
-		{"X", printing_All},
+		{"x", printing_hexadecimal_system},
+		{"X", printing_all_hexadecimal},
 		{NULL, NULL}
 	};
-	va_list list_of_arguements;
+	va_list ls_arg;
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(list_of_arguememts, format);
-	printed_chars = parser(format, list_of_functions, list_of_arguements);
-	va_end(list_of_arguements);
+	va_start(ls_arg, format);
+	print_characters = reader(format, ls_of_f, ls_arg);
+	va_end(ls_arg);
 	return (print_characters);
 }

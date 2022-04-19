@@ -14,7 +14,7 @@ struct class_sy
 	int (*function)(va_list);
 };
 typedef struct class_sy function_converting;
-int reader(const char *format, function_converting lis_of_functions[], va_list list_list_of_arguements);
+int reader(const char *format, function_converting ls_of_f[], va_list ls_arg);
 int _printf(const char *format, ...);
 int _printing_character(char);
 int printing_character(va_list);
