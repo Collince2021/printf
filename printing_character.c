@@ -1,12 +1,11 @@
 #include "main.h"
 /**
- * print_character - print the character  to stdout
- * @c:character to be printed
- * Return:When success 1 is returned.
- * When there is an error
- * -1 is returned, and erorr number is set.
+ * _write_char - writes the character c to stdout
+ * @c: The character to print
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int print_character(char c)
+int _write_char(char c)
 {
 	return (write(1, &c, 1));
 }

@@ -1,25 +1,24 @@
 #include "main.h"
 #include <stdio.h>
 int hex_check(int, char);
-
 /**
- * printing_in_binary - Converts a number from base 10 to binary
- * @Array: List of arguments passed to this function
+ * print_binary - Converts a number from base 10 to binary
+ * @list: List of arguments passed to this function
  * Return: The length of the number printed
  */
-int printing_in_binary(va_list Array)
+int print_binary(va_list list)
 {
 	unsigned int num;
 	int i, len;
 	char *str;
 	char *rev_str;
 
-	num = va_arg(Array, unsigned int);
+	num = va_arg(list, unsigned int);
 	if (num == 0)
-		return (_printing_character('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
-	len = length_of_base(num, 2);
+	len = base_len(num, 2);
 	str = malloc(sizeof(char) * len + 1);
 	if (str == NULL)
 		return (-1);
@@ -33,34 +32,33 @@ int printing_in_binary(va_list Array)
 		num = num / 2;
 	}
 	str[i] = '\0';
-	rev_str = reverse_string(str);
+	rev_str = rev_string(str);
 	if (rev_str == NULL)
 		return (-1);
-	writing_the_bas(rev_str);
+	write_base(rev_str);
 	free(str);
 	free(rev_str);
 	return (len);
 }
-
 /**
- * printing_in_octal_system - Prints the numeric representation of a number in octal base
- * @Array: List of all the arguments passed to the program
+ * print_octal - Prints the numeric representation of a number in octal base
+ * @list: List of all the arguments passed to the program
  * Return: Number of symbols printed to stdout
  */
-int printing_in_octal_system(va_list Array)
+int print_octal(va_list list)
 {
 	unsigned int num;
 	int len;
 	char *octal_rep;
 	char *rev_str;
 
-	num = va_arg(Array, unsigned int);
+	num = va_arg(list, unsigned int);
 
 	if (num == 0)
-		return (_printing_character('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
-	len = length_of_base(num, 8);
+	len = base_len(num, 8);
 
 	octal_rep = malloc(sizeof(char) * len + 1);
 	if (octal_rep == NULL)
@@ -72,22 +70,21 @@ int printing_in_octal_system(va_list Array)
 
 	}
 	octal_rep[len] = '\0';
-	rev_str = reverse_string(octal_rep);
+	rev_str = rev_string(octal_rep);
 	if (rev_str == NULL)
 		return (-1);
 
-	writing_the_bas(rev_str);
+	write_base(rev_str);
 	free(octal_rep);
 	free(rev_str);
 	return (len);
 }
-
 /**
- * printing_hexadecimal_system - Prints a representation of a decimal number on base16 lowercase
- * @Array: List of the arguments passed to the function
+ * print_hex - Prints a representation of a decimal number on base16 lowercase
+ * @list: List of the arguments passed to the function
  * Return: Number of characters printed
  */
-int printing_hexadecimal_system(va_list Array)
+int print_hex(va_list list)
 {
 	unsigned int num;
 	int len;
@@ -95,13 +92,13 @@ int printing_hexadecimal_system(va_list Array)
 	char *hex_rep;
 	char *rev_hex;
 
-	num = va_arg(Array, unsigned int);
+	num = va_arg(list, unsigned int);
 
 	if (num == 0)
-		return (_printing_character('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
-	len = length_of_base(num, 16);
+	len = base_len(num, 16);
 	hex_rep = malloc(sizeof(char) * len + 1);
 	if (hex_rep == NULL)
 		return (-1);
@@ -118,21 +115,20 @@ int printing_hexadecimal_system(va_list Array)
 		num = num / 16;
 	}
 	hex_rep[len] = '\0';
-	rev_hex = reverse_string(hex_rep);
+	rev_hex = rev_string(hex_rep);
 	if (rev_hex == NULL)
 		return (-1);
-	writing_the_bas(rev_hex);
+	write_base(rev_hex);
 	free(hex_rep);
 	free(rev_hex);
 	return (len);
 }
-
 /**
- * printing_All - Prints a representation of a decimal number on base16 Uppercase
- * @Array: List of the arguments passed to the function
+ * print_heX - Prints a representation of a decimal number on base16 Uppercase
+ * @list: List of the arguments passed to the function
  * Return: Number of characters printed
  */
-int printing_All(va_list Array)
+int print_heX(va_list list)
 {
 	unsigned int num;
 	int len;
@@ -140,13 +136,13 @@ int printing_All(va_list Array)
 	char *hex_rep;
 	char *rev_hex;
 
-	num = va_arg(Array, unsigned int);
+	num = va_arg(list, unsigned int);
 
 	if (num == 0)
-		return (_printing_character('0'));
+		return (_write_char('0'));
 	if (num < 1)
 		return (-1);
-	len = length_of_base(num, 16);
+	len = base_len(num, 16);
 	hex_rep = malloc(sizeof(char) * len + 1);
 	if (hex_rep == NULL)
 		return (-1);
@@ -163,30 +159,29 @@ int printing_All(va_list Array)
 		num = num / 16;
 	}
 	hex_rep[len] = '\0';
-	rev_hex = reverse_string(hex_rep);
+	rev_hex = rev_string(hex_rep);
 	if (rev_hex == NULL)
 		return (-1);
-	writing_the_bas(rev_hex);
+	write_base(rev_hex);
 	free(hex_rep);
 	free(rev_hex);
 	return (len);
 }
-
 /**
  * hex_check - Checks which hex function is calling it
- * @number: Number to convert into letter
+ * @num: Number to convert into letter
  * @x: Tells which hex function is calling it
  * Return: Ascii value for a letter
  */
-int hex_check(int number, char x)
+int hex_check(int num, char x)
 {
 	char *hex = "abcdef";
 	char *Hex = "ABCDEF";
 
-	number = number - 10;
+	num = num - 10;
 	if (x == 'x')
-		return (hex[number]);
+		return (hex[num]);
 	else
-		return (Hex[number]);
+		return (Hex[num]);
 	return (0);
 }

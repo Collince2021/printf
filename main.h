@@ -1,37 +1,39 @@
-#ifndef LCPRINT_FUNCTION
-#define LCPRINT_FUNCTION
+#ifndef PRINT_FUNCTION
+#define PRINT_F_FUNCTION
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
 /**
-* struct class_sy - A class that stores symbols and functions
-* @oper: The operator
-* @function: Used funcyion
+* struct convert - defines a structure for symbols and functions
+* @sym: The operator
+* @f: The function associated
 */
-struct class_sy
+struct convert
 {
-	char *oper;
-	int (*function)(va_list);
+	char *sym;
+	int (*f)(va_list);
 };
-typedef struct class_sy function_converting;
-int reader(const char *format, function_converting ls_of_f[], va_list ls_arg);
+typedef struct convert conver_t;
+/*Main functions*/
+int parser(const char *format, conver_t f_list[], va_list arg_list);
 int _printf(const char *format, ...);
-int _printing_character(char);
-int printing_character(va_list);
-int printing_string(va_list);
-int printing_percent_specifier(va_list);
-int printing_int(va_list);
-int print_num(va_list);
-int printing_in_binary(va_list);
-int print_reverse(va_list arguement);
-int rot_13_ed_string(va_list);
-int _unsigned(va_list);
-int printing_in_octal_system(va_list array);
-int printing_hexadecimal_system(va_list array);
-int printing_all_hexadecimal(va_list array);
-unsigned int length_of_base(unsigned int, int);
-char *reverse_string(char *);
-void writing_the_bas(char *string);
-char *memorycopy(char *destination, char *source, unsigned int n);
-int printing_unsgined_integer(unsigned int);
+int _write_char(char);
+int print_char(va_list);
+int print_string(va_list);
+int print_percent(va_list);
+int print_integer(va_list);
+int print_number(va_list);
+int print_binary(va_list);
+int print_reversed(va_list arg);
+int rot13(va_list);
+int unsigned_integer(va_list);
+int print_octal(va_list list);
+int print_hex(va_list list);
+int print_heX(va_list list);
+/*Helper functions*/
+unsigned int base_len(unsigned int, int);
+char *rev_string(char *);
+void write_base(char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int print_unsgined_number(unsigned int);
 #endif

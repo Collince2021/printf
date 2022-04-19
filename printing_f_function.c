@@ -7,29 +7,29 @@
  */
 int _printf(const char *format, ...)
 {
-	int print_characters;
-	function_converting ls_of_f[] = {
-		{"c", printing_character},
-		{"s", printing_string},
-		{"%", printing_percent_specifier},
-		{"d", printing_int},
-		{"i", printing_int},
-		{"b", printing_in_binary},
-		{"r", print_reverse},
-		{"R", rot_13_ed_string},
-		{"u", _unsigned},
-		{"o", printing_in_octal_system},
-		{"x", printing_hexadecimal_system},
-		{"X", printing_all_hexadecimal},
+	int printed_chars;
+	conver_t f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_integer},
+		{"i", print_integer},
+		{"b", print_binary},
+		{"r", print_reversed},
+		{"R", rot13},
+		{"u", unsigned_integer},
+		{"o", print_octal},
+		{"x", print_hex},
+		{"X", print_heX},
 		{NULL, NULL}
 	};
-	va_list ls_arg;
+	va_list arg_list;
 
 	if (format == NULL)
 		return (-1);
-
-	va_start(ls_arg, format);
-	print_characters = reader(format, ls_of_f, ls_arg);
-	va_end(ls_arg);
-	return (print_characters);
+	va_start(arg_list, format);
+	/*Calling parser function*/
+	printed_chars = parser(format, f_list, arg_list);
+	va_end(arg_list);
+	return (printed_chars);
 }
